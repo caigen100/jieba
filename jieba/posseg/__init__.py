@@ -118,8 +118,8 @@ def __cut_detail(sentence):
     blocks = re_han.split(sentence)
     for blk in blocks:
         if re_han.match(blk):
-                for word in __cut(blk):
-                    yield word
+                for elem in blk: #do not use viterbi for the proformance.
+                    yield pair(elem,word_tag_tab.get(elem,'x'))
         else:
             tmp = re_skip.split(blk)
             for x in tmp:
